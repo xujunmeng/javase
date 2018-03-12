@@ -1,0 +1,18 @@
+package InheritedGenericClass.类型通配符的上限;
+
+import java.awt.Canvas;
+
+/**
+@author junmeng.xu
+@date  2016年4月7日下午1:32:41
+ */
+public class Circle extends Shape {
+
+	@Override
+	public void draw(Canvas c) {
+		System.out.println("在画布 " + c + "画一个圆");
+	}
+	
+
+	
+}
