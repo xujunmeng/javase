@@ -81,26 +81,33 @@ public class Main {
 
     @Test
     public void testsdf() {
-        int result = 1 | 2;
+        int result = 1 | 2 | 4 | 8;
         System.out.println(result);
         System.out.println((result | 1) == result);
-        System.out.println(result | 2);
+        System.out.println((result | 2) == result);
     }
 
     //该种情况用数据库表示会更好
     @Test
     public void swear() {
-        int result = 1 | 2 | 4 | 8;
-        System.out.println(result);
+        int mysqlValue = 1 | 2 | 4 | 8;
+        System.out.println(mysqlValue);
+
+        System.out.println(1 & mysqlValue);
+        System.out.println(2 & mysqlValue);
+        System.out.println(4 & mysqlValue);
+        System.out.println(16 & mysqlValue);
+
+        int temp = mysqlValue & 2;
+        System.out.println(temp == 2);
 
         int result2 = 1 | 4 | 8;
         System.out.println(result2);
 
-        int result3 = 2 ^ result;
+        int result3 = 2 ^ mysqlValue;
         System.out.println(result3);
 
-        System.out.println(1 & result);
-        System.out.println(2 & result);
+
 
     }
 

@@ -5,11 +5,8 @@ import com.google.common.collect.Maps;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
 
 /**
  * @author junmeng.xu
@@ -170,6 +167,46 @@ public class Test1 {
 		map.put("12345", "ddd");
 		System.out.println(map);
 
+	}
+
+	@Test
+	public void test23() {
+		Map<Integer, List<Integer>> ppvMaps = Maps.newConcurrentMap();
+		ppvMaps.put(123, Lists.newArrayList(1,2,3));
+		ppvMaps.put(456, Lists.newArrayList(4,5,6));
+		ppvMaps.put(789, Lists.newArrayList(7,8,9));
+
+
+	}
+
+	@Test
+	public void testsss() {
+		List<String> list = new ArrayList<>();
+		list.add("123");
+		list.add("456");
+		list.add("789");
+		List<String> result=combination(list);
+		for (String string : result) {
+			System.out.println(string);
+		}
+	}
+
+	public List<String> combination(List<String> inputList){
+		List<String> resList = new ArrayList<>();
+		combinationInt(inputList, resList, 0, new char[inputList.size()]);
+		return resList;
+	}
+
+	private void combinationInt(List<String> inputList, List<String> resList,
+								int ind, char[] arr) {
+		if(ind == inputList.size()){
+			resList.add(new String(arr));
+			return;
+		}
+		for(char c: inputList.get(ind).toCharArray()){
+			arr[ind] = c;
+			combinationInt(inputList, resList, ind + 1, arr);
+		}
 	}
 
 }
