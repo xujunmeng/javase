@@ -17,6 +17,7 @@ public class Main2 {
         list.add("43;53;63");
         list.add("744;84;94");
         List<String> result=combination(list);
+
         for (String string : result) {
             System.out.println(string);
         }

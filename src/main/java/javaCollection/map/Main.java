@@ -3,6 +3,7 @@ package javaCollection.map;
 import com.google.common.collect.Maps;
 import org.junit.Test;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -21,11 +22,13 @@ public class Main {
 	public void testAllKeys(){
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("12", "22");
-		map.put("13", "23");
+		map.put("12", "22");
 		map.put("14", "24");
 		for (String string : map.keySet()) {
 			System.out.println(string);
 		}
+		Collection<String> values = map.values();
+		System.out.println(values);
 	}
 	
 	/**
