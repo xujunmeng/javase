@@ -148,12 +148,12 @@ public class Main {
 	@Test
 	public void test235() {
 		List<Xiong> list = Lists.newArrayList();
-/*		Xiong obj = new Xiong("name1", 23);
+		Xiong obj = new Xiong("name1", 23);
 		Xiong obj2 = new Xiong("name2", 43);
 		Xiong obj3 = new Xiong("name3", 31);
 		list.add(obj);
 		list.add(obj2);
-		list.add(obj3);*/
+		list.add(obj3);
 
 		List<Xiong> list2 = Lists.newArrayList();
 		Xiong obj4 = new Xiong("name2", 43);
