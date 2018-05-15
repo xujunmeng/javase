@@ -90,7 +90,7 @@ public class Main {
     //该种情况用数据库表示会更好
     @Test
     public void swear() {
-        int mysqlValue = 1 | 2 | 4 | 8;
+        int mysqlValue = 0 | 1 | 2 | 4 | 8;
         System.out.println(mysqlValue);
 
         System.out.println(1 & mysqlValue);
@@ -113,8 +113,19 @@ public class Main {
 
     @Test
     public void asfds() {
-        int result = 2;
-        System.out.println(2 ^ 2);
+        int y = 0;
+        int a = 1;
+        int b = 2;
+        int c = 4;
+        int d = 8;
+        int result_1 = a ^ b;
+        int result_2 = a | b;
+        int result_3 = y ^ b;
+        System.out.println(result_1);
+        System.out.println((result_1 & a) == a);
+        System.out.println((result_1 | a) == result_1);
+        System.out.println(result_3);
+
     }
 
 
