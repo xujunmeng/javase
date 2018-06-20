@@ -128,5 +128,11 @@ public class Main {
 
     }
 
+    @Test
+    public void tes23() {
+        int i  = 16 | 8;
+        System.out.println(i);
+    }
+
 
 }
