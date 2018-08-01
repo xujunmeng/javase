@@ -1,9 +1,13 @@
 package Main函数执行时传入参数;
 
+import com.google.common.collect.Lists;
 import javaDate.TimeUtils;
+import org.junit.Test;
 
 import java.text.ParseException;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by junmeng.xu on 2016/12/1.
@@ -40,6 +44,15 @@ public class Main {
 
 
         }
+
+
+    }
+
+    @Test
+    public void test32() {
+        List<String> list = Lists.newArrayList("23", "43", "45");
+        List<String> collect = list.stream().filter(a -> a.equals(23)).collect(Collectors.toList());
+        System.out.println(collect);
 
 
     }
