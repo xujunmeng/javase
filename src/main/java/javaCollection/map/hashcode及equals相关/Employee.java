@@ -34,6 +34,7 @@ public class Employee {
         this.department = department;
     }
 
+    @Override
     public boolean equals(Object o) {
         if(o == null)
         {

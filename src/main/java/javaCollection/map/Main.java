@@ -1,13 +1,13 @@
 package javaCollection.map;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import javaCollection.map.hashcode及equals相关.Employee;
 import org.junit.Test;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
 @author junmeng.xu
@@ -89,6 +89,33 @@ public class Main {
 	public void tesd(){
 		Map<String, String> map = Maps.newHashMap();
 		System.out.println(map.isEmpty());
+	}
+
+
+	/**
+	 * java8 toMap(Key重复java8自己的思路如何解决)
+	 */
+	@Test
+	public void testmap () {
+		List<Employee> list = Lists.newArrayList();
+		Employee e1 = new Employee();
+		e1.setId(1);
+		e1.setFirstname("aa");
+		Employee e2 = new Employee();
+		e2.setId(2);
+		e2.setFirstname("bb");
+		Employee e3 = new Employee();
+		e3.setId(1);
+		e3.setFirstname("aa");
+		Employee e4 = new Employee();
+		e4.setId(4);
+		e4.setFirstname("dd");
+		list.add(e1);
+		list.add(e2);
+		list.add(e3);
+		list.add(e4);
+		Map<Integer, Employee> map = list.stream().collect(Collectors.toMap(Employee::getId, (p) -> p, (v, v1)-> v));
+		System.out.println(map);
 	}
 
 }
