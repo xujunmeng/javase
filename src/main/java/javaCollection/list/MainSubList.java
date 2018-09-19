@@ -48,6 +48,15 @@ public class MainSubList {
 		System.out.println(strings);
 	}
 
+	@Test
+	public void test5() {
+		List<String> list = null;
+		for (String s : list) {
+			System.out.println(s);
+		}
+
+	}
+
 	public static void main(String[] args) {
 		
 		Set<String> sets = new HashSet<String>();
