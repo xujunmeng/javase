@@ -323,4 +323,28 @@ public class Main {
 
 	}
 
+	@Test
+	public void testasdf2() {
+		String bizTypes = "1;5;2;6;3;4";
+		List<Integer> bizTypeList = stringToIntegerList(bizTypes, ";");
+
+		Integer bizType = 2;
+		if (!bizTypeList.contains(bizType)) {
+			System.out.println("asdfasdf");
+		}
+
+	}
+
+	public static List<Integer> stringToIntegerList(String str, String separator) {
+		if (StringUtils.isEmpty(str)) {
+			return new ArrayList<>();
+		}
+		List<Integer> resultList = new ArrayList<>();
+		String[] lists = str.split(separator);
+		for (String list : lists) {
+			resultList.add(Integer.valueOf(list));
+		}
+		return resultList;
+	}
+
 }

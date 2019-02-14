@@ -1,5 +1,7 @@
 package 利用位操作来进行状态操作;
 
+import InheritedGenericClass.泛型方法.类中的泛型方法.Person;
+import com.google.common.collect.Lists;
 import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
@@ -7,6 +9,9 @@ import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.MessageFormat;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * Created by james on 2017/8/22.
@@ -84,7 +89,7 @@ public class Main {
         int result = 1 | 2 | 4 | 8;
         System.out.println(result);
         System.out.println((result | 1) == result);
-        System.out.println((result | 2) == result);
+        System.out.println((result | 8) == result);
     }
 
     //该种情况用数据库表示会更好
@@ -134,5 +139,35 @@ public class Main {
         System.out.println(i);
     }
 
+    @Test
+    public void test23424() {
+        int a = 0;
+        int b = 1;
+        int c = 2;
+        int d = 4;
+        int e = 8;
+        System.out.println(a | b);
+        System.out.println(b | c | c);
+        System.out.println(b | c | d);
+    }
+
+    @Test
+    public void set232() {
+        int result_1 = 5;
+
+        int param = 8;
+
+        System.out.println((result_1 & param) == param);
+        System.out.println((result_1 | param) == result_1);
+    }
+
+    @Test
+    public void test435() {
+        List<Person> list = Lists.newArrayList();
+//        Person person = new Person();
+//        person.setAge(null);
+//        person.setName(null);
+        list.stream().filter(a -> a.getAge() == 1).collect(Collectors.toList());
+    }
 
 }

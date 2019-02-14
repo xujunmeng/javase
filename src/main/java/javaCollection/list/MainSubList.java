@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -50,11 +51,23 @@ public class MainSubList {
 
 	@Test
 	public void test5() {
-		List<String> list = null;
-		for (String s : list) {
-			System.out.println(s);
-		}
+		BigDecimal b = BigDecimal.valueOf(12.1);
+		System.out.println(b.intValue());
 
+	}
+
+	@Test
+	public void test22() {
+		sign:
+		for (int i = 0; i < 5; i++) {
+			System.out.println("i : " + i);
+			for (int j = 0; j < 5; j++) {
+				System.out.println("j : " + j);
+				if (j == 1) {
+					continue sign;
+				}
+			}
+		}
 	}
 
 	public static void main(String[] args) {
