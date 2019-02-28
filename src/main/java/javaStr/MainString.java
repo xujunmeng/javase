@@ -25,6 +25,13 @@ public class MainString {
 	}
 
 	@Test
+	public void setser23() {
+		StringBuilder quotationNames = new StringBuilder("test,");
+		String substring = quotationNames.substring(0, (quotationNames.length() - 1));
+		System.out.println(substring);
+	}
+
+	@Test
 	public void set22(){
 		int i = 10;
 		i += 2;
