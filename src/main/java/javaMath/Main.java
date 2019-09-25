@@ -1,15 +1,19 @@
 package javaMath;
 
+import InheritedGenericClass.泛型方法.类中的泛型方法.Person;
+import com.google.common.collect.Lists;
+import org.apache.commons.lang3.ObjectUtils;
+import org.junit.Test;
+import 重试.RetryUtil;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
-import org.apache.commons.lang3.ObjectUtils;
-import org.junit.Test;
-
-import com.google.common.collect.Lists;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author junmeng.xu
@@ -37,6 +41,18 @@ public class Main {
 			total = total + aa;
 		}
 		System.out.println(total);
+	}
+
+	@Test
+	public void tres213() {
+		Integer a = 23;
+		Integer b = 4;
+		Integer c = 5;
+		Integer d = 3;
+		BigDecimal result1 = BigDecimal.valueOf(a * b * c).divide(BigDecimal.valueOf(d), 2, BigDecimal.ROUND_HALF_UP);
+		BigDecimal result2 = BigDecimal.valueOf(a).multiply(BigDecimal.valueOf(b)).multiply(BigDecimal.valueOf(c)).divide(BigDecimal.valueOf(d), 2, BigDecimal.ROUND_HALF_UP);
+		System.out.println(result1);
+		System.out.println(result2);
 	}
 
 	// subtract
@@ -516,4 +532,93 @@ public class Main {
 		BigDecimal bigDecimal = new BigDecimal(str);
 		System.out.println(bigDecimal);
 	}
+
+	@Test
+	public void tgadfadsf() {
+		BigDecimal a = BigDecimal.valueOf(0);
+
+		a = a.add(BigDecimal.valueOf(33));
+
+		System.out.println(a.add(BigDecimal.valueOf(22)));
+
+	}
+
+	@Test
+	public void tesxvdsvf() {
+		List<Integer> payBalanceNotEnough = Lists.newArrayList(10100007, 13111086);
+
+		Integer a = 10100007;
+		boolean contains = payBalanceNotEnough.contains(a);
+		System.out.println(contains);
+	}
+
+	@Test
+	public void tesr23() {
+		BigDecimal a = BigDecimal.valueOf(0);
+		int i = a.intValue();
+		System.out.println(i);
+	}
+
+	@Test
+	public void tresr() {
+		StringBuffer sb = new StringBuffer();
+
+		String ALLNUMBER = "1234567890";
+
+		SecureRandom random = new SecureRandom();
+		for (int i = 0; i < 6; i++) {
+			sb.append(ALLNUMBER.charAt(random.nextInt(ALLNUMBER.length())));
+		}
+		String s = sb.toString();
+	}
+
+	@Test
+	public void awer() {
+		for (int i = 0; i < 100; i++) {
+			int m = (int)(Math.random()*900 + 100);
+			System.out.println(m);
+		}
+
+	}
+
+	@Test
+	public void seraser() {
+		List<Person> list = Lists.newArrayList();
+		Map<String, Person> collect = list.stream().collect(Collectors.toMap(a -> a.getName(), b -> b));
+		System.out.println(collect);
+		if (null != collect) {
+			System.out.println(collect);
+		}
+	}
+
+	@Test
+	public void tsetr234() throws Exception {
+		int a  = 3;
+		RetryUtil.executeWithRetry(() -> {
+			try {
+				System.out.println(a);
+				int b = 1/0;
+			} catch (Exception e) {
+				return false;
+			}
+			return true;
+		}, true, 10, 3000L);
+	}
+
+	@Test
+	public void wseras() {
+		BigDecimal totalSaleAmount = new BigDecimal(10008.00).setScale(2, BigDecimal.ROUND_DOWN);
+
+		BigDecimal violateProportionValue = new BigDecimal(0.02).setScale(2, BigDecimal.ROUND_DOWN);
+		BigDecimal violateAmount = totalSaleAmount.multiply(violateProportionValue).setScale(0, BigDecimal.ROUND_DOWN);
+
+		BigDecimal bb = new BigDecimal(50).setScale(0, BigDecimal.ROUND_DOWN);
+		if(violateAmount.compareTo(bb) < 0){
+			System.out.println(bb);
+		}else {
+			System.out.println(violateAmount);
+		}
+	}
+
+
 }

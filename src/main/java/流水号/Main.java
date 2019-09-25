@@ -3,8 +3,6 @@ package 流水号;
 import org.junit.Test;
 
 import java.text.MessageFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Random;
 
 /**
@@ -18,9 +16,10 @@ public class Main {
         Random random = new Random(java.util.UUID.randomUUID().hashCode());
         int number = random.nextInt((Max - Min) + 1) + Min;
 
-        String date = new SimpleDateFormat("yyyyMMdd").format(new Date());
-
-        return MessageFormat.format("YC{0}{1}", date, String.valueOf(number));
+//        String date = new SimpleDateFormat("yyyyMMdd").format(new Date());
+//
+//        return MessageFormat.format("YC{0}{1}", date, String.valueOf(number));
+        return MessageFormat.format("YC{0}", String.valueOf(number));
     }
 
     @Test

@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -347,4 +348,82 @@ public class Main {
 		return resultList;
 	}
 
+	@Test
+	public void w3sefdD() {
+		Date effectDate = getEffectDate();
+		Date nowDate = new Date();
+		if (nowDate.getTime() < effectDate.getTime()) {
+			System.out.println("asdfasdf");
+		}
+	}
+
+	private Date getEffectDate() {
+		String effectDate = "2019-08-02";
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = null;
+		try {
+			date = sdf.parse(effectDate);
+		} catch (Exception e) {
+		}
+		return date;
+	}
+
+	@Test
+	public void tset23asdvc() {
+		BigDecimal aa = BigDecimal.valueOf(0);
+		if (aa == null) {
+			System.out.println("77");
+		}
+	}
+
+	@Test
+	public void test234() throws ParseException {
+
+		Date dd = new Date((new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse("2019-07-31 13:50:06")).getTime());
+
+		Integer day = 7;
+		Long receiveDt = getAutoReceiveDt(dd,day);
+
+	}
+
+	public Long getAutoReceiveDt(Date deliverDt,Integer day) {
+		if(null == deliverDt){
+			return null;
+		}
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(deliverDt);
+		cal.add(Calendar.DATE, day); // 七天后自动确认收货
+		Date time = cal.getTime();
+		Long result = cal.getTimeInMillis();
+		String timePrompt = getTimePrompt(result);
+		System.out.println(timePrompt);
+		if (result > 0) {
+			return result;
+		}
+		return null;
+	}
+
+	public String getTimePrompt(Long payDt){
+		if(null == payDt){
+			return null;
+		}
+		String orderPrompt = null;
+		Date date = new Date();
+		Long diff = payDt-date.getTime();
+		if(diff < 0){
+			return null;
+		}
+		long nd = 1000 * 24 * 60 * 60;
+		long nh = 1000 * 60 * 60;
+		long nm = 1000 * 60;
+		// 计算差多少天
+		long day = diff / nd;
+		// 计算差多少小时
+		long hour = diff % nd / nh;
+		// 计算差多少分钟
+		long min = diff % nd % nh / nm;
+		// 计算差多少秒//输出结果
+		orderPrompt = + hour + "小时" + min + "分钟";
+		return orderPrompt;
+	}
 }

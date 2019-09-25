@@ -5,12 +5,7 @@ import com.google.common.collect.Lists;
 import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.text.MessageFormat;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /**
@@ -162,12 +157,67 @@ public class Main {
     }
 
     @Test
+    public void wserse() {
+        Integer flags = 2;
+        flags = flags | 4;
+        System.out.println(flags);
+
+        System.out.println((flags | 4) == flags);
+
+    }
+
+    @Test
+    public void wserse2() {
+        Integer flags = 0|4;
+        System.out.println(flags);
+
+        System.out.println((flags | 0) == flags);
+
+    }
+
+    @Test
+    public void w3sDF() {
+        Integer flags = 2|4|8;
+        System.out.println(flags);
+        System.out.println((flags | 16) == flags);
+    }
+
+    @Test
     public void test435() {
         List<Person> list = Lists.newArrayList();
 //        Person person = new Person();
 //        person.setAge(null);
 //        person.setName(null);
         list.stream().filter(a -> a.getAge() == 1).collect(Collectors.toList());
+    }
+
+    @Test
+    public void asdfasdf() {
+        Integer flags = 0;
+        if ((flags.intValue() | 0) == flags.intValue()) {
+            System.out.println("456tdrtfg");
+        }
+        if ((flags.intValue() | 16) == flags.intValue()) {
+            System.out.println("asdf");
+        }
+    }
+
+    @Test
+    public void wsersdF() {
+        for (int i = 0; i < 1000; i++) {
+            int a = (int)(Math.random()*(9999-1000+1))+1000;
+            System.out.println(a);
+        }
+    }
+
+    @Test
+    public void tesdst() {
+        int aa = 36;
+        if (aa != 0 && ((aa | 8) == aa || (aa | 32) == aa)) {
+            System.out.println("sadfsdf");
+        } else{
+            System.out.println("3423223");
+        }
     }
 
 }
