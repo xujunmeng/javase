@@ -1,12 +1,11 @@
 package javaCollection.list;
 
-import java.util.*;
-
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
-import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
+
+import java.util.*;
 
 /**
 @author junmeng.xu
@@ -31,11 +30,12 @@ public class MainJoin {
 
 	@Test
 	public void test2323() {
-		List<String> list = Lists.newArrayList();
-		list.add("234");
-
-		String s = list.get(list.size() - 1);
-		System.out.println(s);
+		List<Integer> list = Lists.newArrayList();
+		list.add(234);
+		list.add(232);
+		list.add(2);
+		Integer integer = list.stream().max(Integer::compareTo).get();
+		System.out.println(integer);
 	}
 
 	@Test
@@ -64,6 +64,22 @@ public class MainJoin {
 		for (String string : difference) {
 			System.out.println(string);
 		}
+	}
+
+	@Test
+	public void saer() {
+		Set<Integer> test1 = Sets.newHashSet();
+		test1.add(1);
+		test1.add(2);
+		test1.add(3);
+
+		Set<Integer> test2 = Sets.newHashSet();
+		test2.add(3);
+		test2.add(4);
+		test2.add(5);
+
+		test1.addAll(test2);
+		System.out.println(test1);
 	}
 	
 }

@@ -6,6 +6,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
+import java.text.MessageFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -421,10 +422,38 @@ public class MainString {
 	public void testsubString() {
 		String str = "002054_SZ_EQ";
 		int length = str.length();
-		String substring = str.substring(0, length - 6);
+		String substring = str.substring(length-4, length);
 		System.out.println(substring);
 
 	}
+
+	@Test
+	public void ser23() {
+		Date date = new Date();
+		String format = MessageFormat.format("收货时间 : {0}", getTimeStampStr(date));
+		System.out.println(format);
+	}
+
+	public static final SimpleDateFormat LONG_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+	/**
+	 * 得到时间戳格式字串
+	 *
+	 * @param date
+	 * @return
+	 */
+	public static String getTimeStampStr(Date date) {
+		return LONG_DATE_FORMAT.format(date);
+	}
+
+	@Test
+	public void adsfASDF() {
+		Integer a = 1;
+		String result = a != null && a == 1 ? "as" : "asdf";
+		System.out.println(result);
+	}
+
+
 
 	@SuppressWarnings("unused")
 	@Test

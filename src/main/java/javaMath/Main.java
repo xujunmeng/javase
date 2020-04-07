@@ -620,5 +620,50 @@ public class Main {
 		}
 	}
 
+	@Test
+	public void asdfasdf() {
+		BigDecimal a = new BigDecimal(0.02).setScale(2, BigDecimal.ROUND_DOWN);
+		System.out.println(a);
+
+		BigDecimal b = BigDecimal.valueOf(0.02).setScale(2, BigDecimal.ROUND_DOWN);
+		System.out.println(b);
+	}
+
+	@Test
+	public void saefsdf() {
+		List<AAA> aList = Lists.newArrayList();
+		aList.add(new AAA(1, BigDecimal.valueOf(32.4)));
+		aList.add(new AAA(2, BigDecimal.valueOf(32.4)));
+		aList.add(new AAA(2, null));
+
+		BigDecimal reduce = aList.stream().map(a -> a.getA()).filter(a -> a != null).reduce(BigDecimal.ZERO, BigDecimal::add);
+		System.out.println(reduce);
+	}
+
+	class AAA {
+		private Integer id;
+		private BigDecimal a;
+
+		public AAA(Integer id, BigDecimal a) {
+			this.id = id;
+			this.a = a;
+		}
+
+		public Integer getId() {
+			return id;
+		}
+
+		public void setId(Integer id) {
+			this.id = id;
+		}
+
+		public BigDecimal getA() {
+			return a;
+		}
+
+		public void setA(BigDecimal a) {
+			this.a = a;
+		}
+	}
 
 }
