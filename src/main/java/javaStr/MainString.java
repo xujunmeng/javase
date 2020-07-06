@@ -6,6 +6,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
+import java.math.BigInteger;
 import java.text.MessageFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -36,6 +37,14 @@ public class MainString {
 	public void serw3() {
 		List<Integer> integers = stringToIntegerList("101;201;", ";");
 		System.out.println(integers);
+	}
+
+	@Test
+	public void decodeHEX() {
+		String hexs = "a";
+		BigInteger bigInteger = new BigInteger(hexs, 16);
+		int i = bigInteger.intValue();
+		System.out.println(i);
 	}
 
 	public static List<Integer> stringToIntegerList(String str, String separator) {

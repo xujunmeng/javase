@@ -232,4 +232,25 @@ public class Main {
 		return calendar.getTime();
 	}
 
+	@Test
+	public void hashmapTest() throws InterruptedException {
+		HashMap<String, String> map = new HashMap<>(2);
+
+		Thread t = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				for (int i = 0; i < 10000; i++) {
+					new Thread(new Runnable() {
+						@Override
+						public void run() {
+							map.put(UUID.randomUUID().toString(), "");
+						}
+					}, "ftf" + 1).start();
+				}
+			}
+		}, "ftf");
+		t.start();
+		t.join();
+	}
+
 }

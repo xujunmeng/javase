@@ -1,1 +1,15 @@
 # Created by .ignore support plugin (hsz.mobi)
+*.iml
+.idea
+.idea/libraries/Maven__mysql_mysql_connector_java_5_1_45.xml
+.idea/libraries/Maven__org_mapstruct_mapstruct_jdk8_1_2_0_Final.xml
+.idea/libraries/Maven__org_mapstruct_mapstruct_processor_1_2_0_Final.xml
+.idea/libraries/Maven__org_mybatis_mybatis_3_5_2.xml
+.idea/sonarlint/
+.idea/workspace.xml
+java_pid12344.hprof
+java_pid13856.hprof
+java_pid17200.hprof
+java_pid21220.hprof
+"src/main/java/\344\270\212\344\274\240\344\270\213\350\275\275\346\226\207\344\273\266\345\210\260FTP\346\234\215\345\212\241\345\231\250/test/"
+target/

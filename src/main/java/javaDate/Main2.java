@@ -196,4 +196,36 @@ public class Main2 {
 
         //(appointmentModel.getExpectedPickupDt().getTime() - new Date().getTime() / (3600*1000)  1501150983014
     }
+
+
+    @Test
+    public void test23234() throws ParseException {
+        String dateStr = "2020-06-25 2:00:00";
+        String pattern = "yyyy-MM-dd HH:mm:ss";
+        SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
+        Date dt = dateFormat.parse(dateStr);
+
+        Date pointDt = getPointDt(dt, 20, 1);
+        System.out.println(pointDt);
+    }
+
+    /**
+     *
+     * @param hourOfDay 小时数
+     * @param dateAmount 日期往后增加一天.整数往后推,负数往前移动
+     * @return
+     */
+    public static Date getPointDt(Date dt, int hourOfDay, int dateAmount) throws ParseException {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(dt);
+
+        calendar.set(
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH),
+                hourOfDay, 0, 0);
+        calendar.add(Calendar.DATE, dateAmount);
+        Date date = calendar.getTime();
+        return date;
+    }
 }
