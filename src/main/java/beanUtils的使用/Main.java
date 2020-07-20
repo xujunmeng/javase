@@ -5,9 +5,11 @@ package beanUtils的使用;
  */
 public class Main {
 
+    public void test(Base base) {
+
+    }
+
     public static void main(String[] args) {
-
-
 
     }
 
