@@ -17,9 +17,9 @@ public class IndexOfMain {
 
 	public static void main(String[] args) {
 
-		List list = Lists.newArrayList("11","22","33","44","55","66","77","88");
+		List list = Lists.newArrayList("/pandaLock/jason/competitorNode0000000003");
 
-		int indexOf = list.indexOf("55");
+		int indexOf = list.indexOf("competitorNode0000000003");
 
 		System.out.println(indexOf);
 
