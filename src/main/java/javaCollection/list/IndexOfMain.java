@@ -34,6 +34,7 @@ public class IndexOfMain {
 				.filter(a -> StringUtils.isNumeric(a))
 				.map(a -> Integer.valueOf(a)).collect(Collectors.toList());
 		System.out.println(integers);
+		//update
 	}
 
 	@Test
