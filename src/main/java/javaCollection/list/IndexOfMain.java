@@ -55,4 +55,20 @@ public class IndexOfMain {
 		System.out.println(equals);
 	}
 
+	@Test
+	public void testssd() {
+		int i;
+		for ( i = 0; i < 1000000000; i++) {
+			foo();
+		}
+	}
+
+	public void foo(){
+		int i = 0;
+		int j = 0;
+		for ( i = 0; i < 10000000; i++)
+			j = j + 2;
+	}
+
+
 }
