@@ -35,29 +35,12 @@ public class Employee {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if(o == null)
-        {
-            return false;
-        }
-        if (o == this)
-        {
-            return true;
-        }
-        if (getClass() != o.getClass())
-        {
-            return false;
-        }
-        Employee e = (Employee) o;
-        return (this.getId() == e.getId());
-    }
-
-    @Override
-    public int hashCode()
-    {
-        final int PRIME = 31;
-        int result = 1;
-        result = PRIME * result + getId();
-        return result;
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", department='" + department + '\'' +
+                '}';
     }
 }

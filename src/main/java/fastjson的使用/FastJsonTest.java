@@ -2,7 +2,12 @@ package fastjson的使用;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.google.common.collect.Lists;
+import net.sf.json.JSONArray;
 import org.junit.Test;
+
+import java.text.MessageFormat;
+import java.util.List;
 
 /**
  * Created by james on 2017/6/15.
@@ -35,6 +40,54 @@ public class FastJsonTest {
         if (str.indexOf("其他") != -1) {
             System.out.println("asdfasdfasdf");
         }
+    }
+
+    @Test
+    public void sf3w() {
+        int fieldQuantity = 2;
+        int documentKeyQuantity = 3;
+        List<String> diffFieldList = Lists.newArrayList("asdf","asdfwer");
+        String format = MessageFormat.format("t_order_buffer表字段数量 : {0}, t_geo_order_log_*表字段数量 : {1} 不相等, 差异字段 : {2}",
+                fieldQuantity, documentKeyQuantity, diffFieldList);
+        System.out.println(format);
+
+    }
+
+    @Test
+    public void test2342() {
+        if (false || true) {
+            System.out.println("asdf");
+        }
+    }
+
+    @Test
+    public void tset23() {
+        net.sf.json.JSONObject data = new net.sf.json.JSONObject();
+        data.element("user_id", 11);
+        data.element("user_id", 22);
+        System.out.println(data);
+
+
+        net.sf.json.JSONObject order = new net.sf.json.JSONObject();
+        JSONArray jsonArray = new JSONArray();
+        jsonArray.add("1");
+        jsonArray.add("2");
+        jsonArray.add("3");
+
+        order.element("orientation_driver_ids", new JSONArray());
+
+        JSONArray req = null;
+
+        jsonArray.remove(req);
+
+        System.out.println(jsonArray);
+
+        JSONArray orientation_driver_ids= order.getJSONArray("orientation_driver_ids");
+
+        orientation_driver_ids.remove(req);
+
+        System.out.println(order);
+
     }
 
 }

@@ -1,11 +1,15 @@
 package http;
 
+import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.Consts;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
@@ -36,10 +40,12 @@ public class TestMain {
 
         for(int i = 0 ; i < 100000 ; i++){
             completionService.submit(() -> {
-                String url = "http://localhost:8280/test/user/add";
+                String url = "http://localhost:8080/findOne/order_buffer";
+                JSONObject bodyStr = new JSONObject();
+                bodyStr.put("order_id", 447418);
                 String result = null;
                 try {
-                    result = doGet(url, null, new HashMap<>());
+                    result = doPost(url, bodyStr.toJSONString());
                     System.out.println("result : " + result);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -106,6 +112,71 @@ public class TestMain {
 
         return result;
     }
+
+    /**
+     * doPost 请求
+     * @param url   请求url
+     * @param json  请求参数json
+     * @return  响应结果
+     */
+    public static String doPost(String url, String json) throws Exception {
+        return doPost(url, json, new HashMap<>(0), true);
+    }
+
+    /**
+     * doPost 请求
+     * @param url   请求url
+     * @param param  请求参数
+     * @param requestTimeout    请求时间
+     * @param jsonContentType   application/json
+     * @return  响应结果
+     */
+    public static String doPost(String url, String param, Map<String, Integer> requestTimeout, boolean jsonContentType) throws Exception {
+        String result = null;
+        CloseableHttpResponse httpResponse = null;
+        CloseableHttpClient httpClient = null;
+        try {
+            httpClient = HttpClients.createDefault();
+            StringEntity postingString = new StringEntity(param, Consts.UTF_8);
+            postingString.setContentEncoding("UTF-8");
+            if (jsonContentType) {
+                postingString.setContentType("application/json");
+            } else {
+                postingString.setContentType("application/x-www-form-urlencoded");
+            }
+
+            HttpPost httpPost = new HttpPost(url);
+
+            httpPost.setConfig(buildRequestConfig(requestTimeout));
+            httpPost.setEntity(postingString);
+
+            httpResponse = httpClient.execute(httpPost);
+            HttpEntity entity = httpResponse.getEntity();
+            if (entity != null) {
+                result = EntityUtils.toString(entity, Charset.forName("UTF-8"));
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("发送POST请求异常", e);
+        } finally {
+            // 关闭资源
+            if (null != httpResponse) {
+                try {
+                    httpResponse.close();
+                } catch (IOException e) {
+                }
+            }
+//            if (null != httpClient) {
+//                try {
+//                    httpClient.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+
+        }
+        return result;
+    }
+
 
     private static RequestConfig buildRequestConfig(Map<String, Integer> requestTimeout) {
         // 配置请求参数实例
